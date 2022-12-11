@@ -1,0 +1,16 @@
+<template>
+    <app-validator
+        if:true={View.validation}
+        invitation-id={invitationId}
+        onnavigate={handleNavigation}
+    ></app-validator>
+    <app-home
+        if:true={View.home}
+        onnavigate={handleNavigation}
+    ></app-home>
+    <app-invitation
+        if:true={View.invitations}
+        invitation-id={invitationId}
+        onnavigate={handleNavigation}
+    ></app-invitation>
+</template>

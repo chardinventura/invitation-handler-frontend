@@ -1,0 +1,7 @@
+.message-container {
+	background-image: url(/public/assets/img/background.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	height: 480px;
+}

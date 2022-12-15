@@ -1,11 +1,10 @@
 import { LightningElement } from 'lwc';
 
-const DEFAULT_VIEW = 'validation';
+const DEFAULT_VIEW = 'home';
 
 export default class HelloWorldApp extends LightningElement {
 
 	View = {
-		validation: false,
 		home: false,
 		invitations: false
 	};

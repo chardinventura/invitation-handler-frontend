@@ -1,17 +1,30 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, wire } from 'lwc';
+import { getInvitations } from 'api/invitation';
 
-const DEFAULT_VIEW = 'home';
+const DEFAULT_VIEW = 'test';
 
 export default class HelloWorldApp extends LightningElement {
 
+	invitations;
+
 	View = {
 		home: false,
+		test: true,
 		invitations: false
 	};
 
-	get invitationId() {
-		const invitationId = window.location.pathname.replace(/\//, '');
-		return !invitationId ? 'something' : invitationId;
+	// get invitationId() {
+	// 	const invitationId = window.location.pathname.replace(/\//, '');
+	// 	return !invitationId ? 'something' : invitationId;
+	// }
+
+	@wire(getInvitations)
+	getInvitations({ data, error }) {
+		if(data) {
+			this.invitations = data;
+		} else if(error) {
+			console.error('Error in --> getInvitations ', error);
+		}
 	}
 
 	connectedCallback() {
@@ -34,5 +47,10 @@ export default class HelloWorldApp extends LightningElement {
 			...accumulator,
 			[name]: name === viewName
 		}), {});
+	}
+
+	handleViewInvitation({ detail }) {
+		this.invitationId = detail;
+		this.enableView('invitations');
 	}
 }

@@ -1,5 +1,23 @@
 import { BASE_PATH } from 'api/constants';
 
+export class getInvitations {
+
+	constructor(dataCallback) {
+		this.dataCallback = dataCallback;
+	}
+
+	connect() {}
+
+	update() {
+		fetch(`${BASE_PATH}/invitations`)
+		.then((response) => response.json())
+		.then((invitations) => this.dataCallback({ data: invitations }))
+		.catch((error) => this.dataCallback({ error }));
+	}
+
+	disconnect(){}
+}
+
 export async function validateInvitation(id, password) {
 	const body = {
 		id,

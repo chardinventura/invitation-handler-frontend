@@ -38,7 +38,7 @@ export default class Invitation extends LightningElement {
 	}
 
 	get isSubmitDisabled() {
-		return this.people?.every((person) => !person.attendance) ?? true;
+		return !this.people?.length;
 	}
 
 	handlePersonSelection({ target }) {
@@ -72,7 +72,7 @@ export default class Invitation extends LightningElement {
 
 	handleNavigation() {
 		this.dispatchEvent(new CustomEvent('navigate', {
-			detail: 'home'
+			detail: 'test'
 		}));
 	}
 }

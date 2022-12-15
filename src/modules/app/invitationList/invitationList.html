@@ -1,0 +1,25 @@
+<template>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>{label.id}</th>
+				<th>{label.description}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<template if:true={invitations}>
+				<template for:each={invitations} for:item="invitation">
+					<tr key={invitation.id}>
+						<td>{invitation.id}</td>
+						<td>{invitation.description}</td>
+						<td>
+							<button class="btn btn-outline-success" data-id={invitation.id} onclick={handleView}>
+								<i class="fa-solid fa-eye"></i>
+							</button>
+						</td>
+					</tr>
+				</template>
+			</template>
+		</tbody>
+	</table>
+</template>

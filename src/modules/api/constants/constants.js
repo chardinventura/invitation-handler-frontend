@@ -1,1 +1,1 @@
-export const BASE_PATH = 'http://localhost:8080/api';
+export const BASE_PATH = 'https://invitation-handler-backend.herokuapp.com/api';

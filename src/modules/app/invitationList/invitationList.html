@@ -6,27 +6,20 @@
 		invitation-id={selectedInvitationId}
 	></component-validator>
 
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th>{label.id}</th>
-				<th>{label.description}</th>
-			</tr>
-		</thead>
-		<tbody>
-			<template if:true={invitations}>
-				<template for:each={invitations} for:item="invitation">
-					<tr key={invitation.id}>
-						<td>{invitation.id}</td>
-						<td>{invitation.description}</td>
-						<td>
-							<button class="btn btn-outline-success" data-id={invitation.id} onclick={handleView}>
-								<i data-id={invitation.id} class="fa-solid fa-eye"></i>
-							</button>
-						</td>
-					</tr>
-				</template>
+	<div>
+		<div class="my-3">
+			<h3 class="text-center">Invitaciones</h3>
+		</div>
+
+		<div if:true={invitations} class="d-flex flex-column gap-2">
+			<template for:each={invitations} for:item="invitation">
+				<button
+					key={invitation.id}
+					data-id={invitation.id}
+					class="btn btn-primary"
+					onclick={handleView}
+				>{invitation.description}</button>
 			</template>
-		</tbody>
-	</table>
+		</div>
+	</div>
 </template>

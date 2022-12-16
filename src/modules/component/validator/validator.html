@@ -1,0 +1,22 @@
+<template>
+	<div class="container col-5 background">
+		<div class="py-4">
+			<h1 class="text-center">Validar invitación</h1>
+		</div>
+
+		<div class="row px-4">
+			<label class="col-auto col-form-label" for="key">Clave</label>
+			<div class="col">
+				<input class="form-control" type="text" onchange={handleKeyChange}>
+				<div if:true={isKeyInvalid} class="ms-1">
+					<span class="text-danger">{label.invalidKey}</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="d-flex justify-content-end pt-4 pb-3">
+			<button class="btn btn-outline-primary me-1" aria-label="Cancelar" onclick={handleAbort}>Cancelar</button>
+			<button class="btn btn-primary" onclick={handleInvitationValidation}>Validate</button>
+		</div>
+	</div>
+</template>

@@ -7,6 +7,15 @@ export default class HelloWorldApp extends LightningElement {
 
 	invitations;
 
+	get isLoading() {
+		return !this.anyError &&
+		(
+			!this.invitations
+		);
+	}
+
+	anyError;
+
 	View = {
 		home: false,
 		test: true,
@@ -24,6 +33,7 @@ export default class HelloWorldApp extends LightningElement {
 			this.invitations = data;
 		} else if(error) {
 			console.error('Error in --> getInvitations ', error);
+			this.anyError = true;
 		}
 	}
 

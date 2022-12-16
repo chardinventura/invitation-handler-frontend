@@ -9,22 +9,28 @@ export default class Invitation extends LightningElement {
 	@api
 	invitationId;
 
+	_isLoading;
+
 	people;
+
+	get isLoading() {
+		return !this.anyError && !this.people || this._isLoading;
+	}
 
 	@wire(getPeopleByInvitationId, {
 		invitationId: "$invitationId"
 	})
 	getPeopleByInvitationId({ data, error }) {
-		const isEmpty = !data?.length;
-		if(!isEmpty) {
+		if(data) {
 			this.people = data.map((person) => ({
 				...person,
 				class: buildPersonBtnClass(person.attendance)
 			}));
-		} else if(isEmpty) {
-			alert('No hay personas a registrar.')
+			if(!this.people.length)
+				alert('No hay personas a registrar.')
 		} else if(error) {
 			alert('Problemas al obtener las personas a asistir.')
+			this.anyError = true;
 			console.error('Error in getPeopleByInvitationId --> ', error);
 		}
 	}
@@ -54,6 +60,7 @@ export default class Invitation extends LightningElement {
 	}
 
 	handleSubmit() {
+		this._isLoading = true;
 		const people = this.people.map(({ id, attendance }) => ({
 			id,
 			attendance
@@ -67,7 +74,9 @@ export default class Invitation extends LightningElement {
 		.catch((error) => {
 			alert('Ha ocurrido un error al intentar registrar la asistencia, intentar de nuevo.')
 			console.error('Error in registerAttendance --> ', error);
-		})
+		}).finally(() => {
+			this._isLoading = false;
+		});
 	}
 
 	handleNavigation() {

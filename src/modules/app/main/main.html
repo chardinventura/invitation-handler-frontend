@@ -1,4 +1,9 @@
 <template>
+
+    <component-spinner
+        if:true={isLoading}
+    ></component-spinner>
+
     <app-home
         if:true={View.home}
         onnavigate={handleNavigation}

@@ -1,4 +1,8 @@
 <template>
+    <component-spinner
+        if:true={isLoading}
+    ></component-spinner>
+
 	<div class="py-3 text-center">
 		<h2>{label.header}</h2>
 	</div>

@@ -1,4 +1,11 @@
 <template>
+	<component-validator
+		if:true={isValidatorVisible}
+		onabort={handleAbort}
+		onsuccess={handleSuccess}
+		invitation-id={selectedInvitationId}
+	></component-validator>
+
 	<table class="table table-striped">
 		<thead>
 			<tr>

@@ -7,6 +7,12 @@ export default class HelloWorldApp extends LightningElement {
 
 	invitations;
 
+	get selectedInvitation() {
+		return this._selectedInvitation || {};
+	}
+
+	_selectedInvitation;
+
 	get isLoading() {
 		return !this.anyError &&
 		(
@@ -21,11 +27,6 @@ export default class HelloWorldApp extends LightningElement {
 		test: true,
 		invitations: false
 	};
-
-	// get invitationId() {
-	// 	const invitationId = window.location.pathname.replace(/\//, '');
-	// 	return !invitationId ? 'something' : invitationId;
-	// }
 
 	@wire(getInvitations)
 	getInvitations({ data, error }) {
@@ -60,7 +61,7 @@ export default class HelloWorldApp extends LightningElement {
 	}
 
 	handleViewInvitation({ detail }) {
-		this.invitationId = detail;
+		this._selectedInvitation = detail;
 		this.enableView('invitations');
 	}
 }

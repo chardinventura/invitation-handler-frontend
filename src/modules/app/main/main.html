@@ -17,7 +17,8 @@
 
     <app-invitation
         if:true={View.invitations}
-        invitation-id={invitationId}
+        invitation-id={selectedInvitation.id}
+        invitation-key={selectedInvitation.key}
         onnavigate={handleNavigation}
     ></app-invitation>
 </template>

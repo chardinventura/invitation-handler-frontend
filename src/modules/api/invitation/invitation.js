@@ -18,17 +18,13 @@ export class getInvitations {
 	disconnect(){}
 }
 
-export async function validateInvitation(id, password) {
-	const body = {
-		id,
-		password
-	};
-	const response = await fetch(`${BASE_PATH}/invitations/validate`, {
+export async function validateInvitation(id, invitation) {
+	const response = await fetch(`${BASE_PATH}/invitations/${id}/validate`, {
 		method: 'post',
 		headers: {
 			"Content-Type": "application/json"
 		},
-		body: JSON.stringify(body)
+		body: JSON.stringify(invitation)
 	});
 	return response.status;
 }

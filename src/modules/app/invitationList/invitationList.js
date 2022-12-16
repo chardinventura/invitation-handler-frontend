@@ -1,8 +1,13 @@
 import { api, LightningElement } from "lwc";
 
 export default class InvitationList extends LightningElement {
+
 	@api
 	invitations;
+
+	selectedInvitationId;
+
+	isValidatorVisible;
 
 	get label() {
 		return {
@@ -12,8 +17,16 @@ export default class InvitationList extends LightningElement {
 	}
 
 	handleView({ target }) {
-		this.dispatchEvent(new CustomEvent('view', {
-			detail: target.dataset.id
-		}));
+		this.selectedInvitationId = target.dataset.id;
+		this.isValidatorVisible = true;
+	}
+
+	handleAbort() {
+		this.isValidatorVisible = false;
+	}
+
+	handleSuccess({ detail }) {
+		this.isValidatorVisible = false;
+		this.dispatchEvent(new CustomEvent('view', { detail }));
 	}
 }

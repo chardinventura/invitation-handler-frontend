@@ -1,5 +1,5 @@
 import { api, LightningElement, wire } from 'lwc';
-import { getPeopleByInvitationId } from 'api/person';
+import { getPeopleByInvitation } from 'api/person';
 import { registerAttendance } from 'api/invitation'
 
 const buildPersonBtnClass = (attendance) => `btn btn-${attendance ? '' : 'outline-' }primary mb-2`;
@@ -9,16 +9,21 @@ export default class Invitation extends LightningElement {
 	@api
 	invitationId;
 
+	@api
+	invitationKey;
+
 	_isLoading;
 
 	people;
+	anyError;
 
 	get isLoading() {
-		return !this.anyError && !this.people || this._isLoading;
+		return !this.anyError && (!this.people || this._isLoading);
 	}
 
-	@wire(getPeopleByInvitationId, {
-		invitationId: "$invitationId"
+	@wire(getPeopleByInvitation, {
+		invitationId: "$invitationId",
+		invitationKey: "$invitationKey"
 	})
 	getPeopleByInvitationId({ data, error }) {
 		if(data) {
@@ -29,8 +34,8 @@ export default class Invitation extends LightningElement {
 			if(!this.people.length)
 				alert('No hay personas a registrar.')
 		} else if(error) {
-			alert('Problemas al obtener las personas a asistir.')
 			this.anyError = true;
+			alert('Problemas al obtener las personas a asistir.')
 			console.error('Error in getPeopleByInvitationId --> ', error);
 		}
 	}

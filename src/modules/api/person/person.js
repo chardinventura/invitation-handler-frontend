@@ -1,6 +1,6 @@
 import { BASE_PATH } from "api/constants";
 
-export class getPeopleByInvitationId {
+export class getPeopleByInvitation {
 
 	constructor(dataCallback) {
 		this.dataCallback = dataCallback;
@@ -8,19 +8,21 @@ export class getPeopleByInvitationId {
 
 	connect() {}
 
-	async update({ invitationId }) {
-		if(!invitationId) return;
-
+	async update({ invitationId, invitationKey }) {
+		const body = {
+			id: invitationId,
+			key: invitationKey
+		};
 		try {
-			const response = await fetch(`${BASE_PATH}/people/invitation/${invitationId}`);
-			const data = (await response.json())
-			.map(({ id, firstName, lastName, attendance }) => ({
-				id,
-				firstName,
-				lastName,
-				attendance
-			}));
-			this.dataCallback({ data });
+			const response = await fetch(`${BASE_PATH}/people/invitation`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(body)
+			});
+			const people = await response.json();
+			this.dataCallback({ data: people });
 		} catch (error) {
 			this.dataCallback({ error });
 		}

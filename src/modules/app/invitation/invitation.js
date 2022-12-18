@@ -17,6 +17,8 @@ export default class Invitation extends LightningElement {
 	people;
 	anyError;
 
+	toastMessage;
+
 	get isLoading() {
 		return !this.anyError && (!this.people || this._isLoading);
 	}
@@ -31,11 +33,12 @@ export default class Invitation extends LightningElement {
 				...person,
 				class: buildPersonBtnClass(person.attendance)
 			}));
-			if(!this.people.length)
-				alert('No hay personas a registrar.')
+			if(!this.people.length) {
+				this.showAlert(this.label.notPeopleFound);
+			}
 		} else if(error) {
 			this.anyError = true;
-			alert('Problemas al obtener las personas a asistir.')
+			this.showAlert(this.label.problemsToFetch);
 			console.error('Error in getPeopleByInvitationId --> ', error);
 		}
 	}
@@ -44,7 +47,11 @@ export default class Invitation extends LightningElement {
 		return {
 			goBack: "Volver",
 			header: "Invitations",
-			submit: "Submit"
+			submit: "Submit",
+			notPeopleFound: "No hay personas a registrar.",
+			problemsToFetch: "Problemas al obtener las personas a asistir.",
+			successFul: "Asistencia registrada con éxito.",
+			problemsRegisteringAttendance: "Ha ocurrido un error al intentar registrar la asistencia, intentar de nuevo."
 		};
 	}
 
@@ -73,11 +80,11 @@ export default class Invitation extends LightningElement {
 		registerAttendance(this.invitationId, people)
 		.then(({ status }) => {
 			if(status === 200) {
-				alert('Asistencia registrada con éxito.');
+				this.showAlert(this.label.successFul)
 			}
 		})
 		.catch((error) => {
-			alert('Ha ocurrido un error al intentar registrar la asistencia, intentar de nuevo.')
+			this.showAlert(this.label.problemsRegisteringAttendance)
 			console.error('Error in registerAttendance --> ', error);
 		}).finally(() => {
 			this._isLoading = false;
@@ -88,5 +95,12 @@ export default class Invitation extends LightningElement {
 		this.dispatchEvent(new CustomEvent('navigate', {
 			detail: 'test'
 		}));
+	}
+
+	showAlert(message) {
+		if(message) {
+			this.toastMessage = message;
+		}
+		this.template.querySelector('component-toast').show();
 	}
 }

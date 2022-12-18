@@ -1,0 +1,12 @@
+<template>
+	<div class="toast-container position-fixed w-100 bottom-0 start-0 d-flex justify-content-center pb-2">
+		<div data-id="alert" class="toast align-items-center text-bg-secondary" role="alert" aria-live="assertive"
+			aria-atomic="true">
+			<div class="d-flex">
+				<div class="toast-body">{message}</div>
+				<button type="button" class="btn-close btn-close-white me-2 m-auto" aria-label={label.close}
+					onclick={handleClose}></button>
+			</div>
+		</div>
+	</div>
+</template>

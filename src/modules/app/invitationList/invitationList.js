@@ -7,8 +7,6 @@ export default class InvitationList extends LightningElement {
 
 	selectedInvitationId;
 
-	isValidatorVisible;
-
 	get label() {
 		return {
 			id: "Identificador",
@@ -18,15 +16,10 @@ export default class InvitationList extends LightningElement {
 
 	handleView({ target }) {
 		this.selectedInvitationId = target.dataset.id;
-		this.isValidatorVisible = true;
-	}
-
-	handleAbort() {
-		this.isValidatorVisible = false;
+		this.template.querySelector("component-validator").showModal();
 	}
 
 	handleSuccess({ detail }) {
-		this.isValidatorVisible = false;
 		this.dispatchEvent(new CustomEvent('view', { detail }));
 	}
 }

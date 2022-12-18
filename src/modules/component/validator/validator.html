@@ -1,22 +1,39 @@
 <template>
-	<div class="container col-5 background">
-		<div class="py-4">
-			<h1 class="text-center">Validar invitación</h1>
-		</div>
+	<div class="modal fade" data-id="modal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">{label.title}</h5>
+					<div class="px-1" role="button" aria-label={label.close} onclick={handleAbort}>
+						<i class="fa-sharp fa-solid fa-xmark fa-xl"></i>
+					</div>
+				</div>
+				<div class="modal-body">
+					<component-spinner if:true={isLoading}></component-spinner>
 
-		<div class="row px-4">
-			<label class="col-auto col-form-label" for="key">Clave</label>
-			<div class="col">
-				<input class="form-control" type="text" onchange={handleKeyChange}>
-				<div if:true={isKeyInvalid} class="ms-1">
-					<span class="text-danger">{label.invalidKey}</span>
+					<div class="row">
+						<label class="col-auto col-form-label" for="key">{label.key}</label>
+						<div class="col">
+							<input data-id="key" id="key" class="form-control" type="text" onchange={handleKeyChange}>
+							<div if:true={isKeyInvalid} class="ms-1">
+								<span class="text-danger">{label.invalidKey}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-outline-primary" aria-label={label.close}
+						onclick={handleAbort}>{label.close}</button>
+					<button class="btn btn-primary" onclick={handleInvitationValidation} disabled={isValidating}>
+						<span
+							if:true={isValidating}
+							class="spinner-border spinner-border-sm"
+							role="status"
+							aria-hidden="true"
+						></span> {validationButtonLabel}
+					</button>
 				</div>
 			</div>
-		</div>
-
-		<div class="d-flex justify-content-end pt-4 pb-3">
-			<button class="btn btn-outline-primary me-1" aria-label="Cancelar" onclick={handleAbort}>Cancelar</button>
-			<button class="btn btn-primary" onclick={handleInvitationValidation}>Validate</button>
 		</div>
 	</div>
 </template>

@@ -1,6 +1,6 @@
 import { LightningElement, wire } from 'lwc';
 import { getInvitations } from 'api/invitation';
-import { View } from 'util/constants';
+import { View, VIEW_CACHE_KEY } from 'util/constants';
 
 const DEFAULT_VIEW = View.HOME;
 
@@ -36,8 +36,16 @@ export default class HelloWorldApp extends LightningElement {
 	}
 
 	connectedCallback() {
-		const cachedView = sessionStorage.getItem('view');
-		this.enableView(cachedView || DEFAULT_VIEW);
+		const cachedView = sessionStorage.getItem(VIEW_CACHE_KEY);
+		const isValidView = Object.values(View).some((viewName) => {
+			return viewName === cachedView;
+		});
+		if(cachedView && !isValidView) {
+			sessionStorage.removeItem(VIEW_CACHE_KEY);
+			this.enableView(DEFAULT_VIEW);
+		} else {
+			this.enableView(cachedView || DEFAULT_VIEW);
+		}
 	}
 
 	handleNavigation({ detail }) {

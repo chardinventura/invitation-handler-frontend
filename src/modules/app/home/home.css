@@ -1,7 +1,6 @@
-.message-container {
-	background-image: url(/public/assets/img/background.jpg);
+.background-container {
+	background-image: url(https://images.unsplash.com/photo-1550167862-b1f33359eba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHw%3D&w=1000&q=80);
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: contain;
-	height: 480px;
+	background-size: cover;
 }

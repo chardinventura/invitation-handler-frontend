@@ -25,4 +25,8 @@ export default class InvitationList extends LightningElement {
 		this.dispatchEvent(new CustomEvent('view', { detail }));
 		navigate.bind(this)(View.ATTENDANCE, false);
 	}
+
+	handleGoBack() {
+		navigate.bind(this)(View.HOME);
+	}
 }

@@ -12,7 +12,9 @@ export default class InvitationList extends LightningElement {
 	get label() {
 		return {
 			id: "Identificador",
-			description: "Description"
+			description: "Description",
+			selectYourFamily: "Seleccione su familia",
+			goToHome: "VOLVER A HOME"
 		};
 	}
 

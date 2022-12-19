@@ -1,4 +1,6 @@
 import { api, LightningElement, wire } from 'lwc';
+import { View } from 'util/constants';
+import { navigate } from 'util/functions';
 import { getPeopleByInvitation } from 'api/person';
 import { registerAttendance } from 'api/invitation'
 
@@ -92,9 +94,7 @@ export default class Invitation extends LightningElement {
 	}
 
 	handleNavigation() {
-		this.dispatchEvent(new CustomEvent('navigate', {
-			detail: 'test'
-		}));
+		navigate.bind(this)(View.INVITATIONS);
 	}
 
 	showAlert(message) {

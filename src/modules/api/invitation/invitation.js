@@ -1,4 +1,4 @@
-import { BASE_PATH } from 'api/constants';
+import { BASE_PATH } from 'util/constants';
 
 export class getInvitations {
 

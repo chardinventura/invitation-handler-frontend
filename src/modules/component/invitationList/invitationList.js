@@ -1,4 +1,6 @@
 import { api, LightningElement } from "lwc";
+import { View } from 'util/constants';
+import { navigate } from 'util/functions';
 
 export default class InvitationList extends LightningElement {
 
@@ -21,5 +23,6 @@ export default class InvitationList extends LightningElement {
 
 	handleSuccess({ detail }) {
 		this.dispatchEvent(new CustomEvent('view', { detail }));
+		navigate.bind(this)(View.ATTENDANCE, false);
 	}
 }

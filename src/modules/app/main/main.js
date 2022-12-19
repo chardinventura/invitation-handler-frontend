@@ -1,7 +1,8 @@
 import { LightningElement, wire } from 'lwc';
 import { getInvitations } from 'api/invitation';
+import { View } from 'util/constants';
 
-const DEFAULT_VIEW = 'test';
+const DEFAULT_VIEW = View.HOME;
 
 export default class HelloWorldApp extends LightningElement {
 
@@ -22,11 +23,7 @@ export default class HelloWorldApp extends LightningElement {
 
 	anyError;
 
-	View = {
-		home: false,
-		test: true,
-		invitations: false
-	};
+	activeView = {};
 
 	@wire(getInvitations)
 	getInvitations({ data, error }) {
@@ -40,28 +37,18 @@ export default class HelloWorldApp extends LightningElement {
 
 	connectedCallback() {
 		const cachedView = sessionStorage.getItem('view');
-		if(cachedView && this.View[cachedView] != null) {
-			this.enableView(cachedView);
-		} else {
-			this.enableView(DEFAULT_VIEW);
-		}
+		this.enableView(cachedView || DEFAULT_VIEW);
 	}
 
 	handleNavigation({ detail }) {
 		this.enableView(detail);
-		sessionStorage.setItem('view', detail);
 	}
 
 	enableView(viewName) {
-		this.View = Object.entries(this.View)
-		.reduce((accumulator, [name]) => ({
-			...accumulator,
-			[name]: name === viewName
-		}), {});
+		this.activeView = { [viewName]: true };
 	}
 
 	handleViewInvitation({ detail }) {
 		this._selectedInvitation = detail;
-		this.enableView('invitations');
 	}
 }

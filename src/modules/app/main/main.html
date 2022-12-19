@@ -1,22 +1,22 @@
 <template>
-
     <component-spinner
         if:true={isLoading}
     ></component-spinner>
 
     <app-home
-        if:true={View.home}
+        if:true={activeView.home}
         onnavigate={handleNavigation}
     ></app-home>
 
     <component-invitation-list
-        if:true={View.test}
+        if:true={activeView.invitations}
         invitations={invitations}
         onview={handleViewInvitation}
+        onnavigate={handleNavigation}
     ></component-invitation-list>
 
     <app-attendance
-        if:true={View.invitations}
+        if:true={activeView.attendance}
         invitation-id={selectedInvitation.id}
         invitation-key={selectedInvitation.key}
         onnavigate={handleNavigation}

@@ -5,5 +5,6 @@ export const VIEW_CACHE_KEY = 'view';
 export const View = { 
 	HOME: "home",
 	INVITATIONS: "invitations",
-	ATTENDANCE: "attendance"
+	ATTENDANCE: "attendance",
+	ATTENDANCE_CONFIRMATION: "attendanceConfirmation"
  };

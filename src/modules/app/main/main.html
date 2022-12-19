@@ -15,6 +15,12 @@
         onnavigate={handleNavigation}
     ></component-invitation-list>
 
+    <app-attendance-confirmation
+        if:true={activeView.attendanceConfirmation}
+        selected-invitation={selectedInvitation}
+        onnavigate={handleNavigation}
+    ></app-attendance-confirmation>
+
     <app-attendance
         if:true={activeView.attendance}
         invitation-id={selectedInvitation.id}

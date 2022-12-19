@@ -57,6 +57,8 @@ export default class HelloWorldApp extends LightningElement {
 	}
 
 	handleViewInvitation({ detail }) {
-		this._selectedInvitation = detail;
+		this._selectedInvitation = this.invitations.find(({ id }) => {
+			return id === detail.id
+		});
 	}
 }

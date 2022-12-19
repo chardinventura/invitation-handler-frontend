@@ -9,16 +9,16 @@
         onnavigate={handleNavigation}
     ></app-home>
 
-    <app-invitation-list
+    <component-invitation-list
         if:true={View.test}
         invitations={invitations}
         onview={handleViewInvitation}
-    ></app-invitation-list>
+    ></component-invitation-list>
 
-    <app-invitation
+    <app-attendance
         if:true={View.invitations}
         invitation-id={selectedInvitation.id}
         invitation-key={selectedInvitation.key}
         onnavigate={handleNavigation}
-    ></app-invitation>
+    ></app-attendance>
 </template>

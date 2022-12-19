@@ -102,5 +102,8 @@ export default class Invitation extends LightningElement {
 			this.toastMessage = message;
 		}
 		this.template.querySelector('component-toast').show();
+		setTimeout(() => {
+			navigate.bind(this)(View.FAREWELL);
+		}, 3000);
 	}
 }

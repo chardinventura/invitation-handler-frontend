@@ -6,5 +6,6 @@ export const View = {
 	HOME: "home",
 	INVITATIONS: "invitations",
 	ATTENDANCE: "attendance",
-	ATTENDANCE_CONFIRMATION: "attendanceConfirmation"
+	ATTENDANCE_CONFIRMATION: "attendanceConfirmation",
+	FAREWELL: "farewell"
  };

@@ -12,6 +12,6 @@ export default class AttendanceConfirmation extends LightningElement {
 	}
 
 	handleAbort() {
-		navigate.bind(this)(View.INVITATIONS);
+		navigate.bind(this)(View.FAREWELL);
 	}
 }

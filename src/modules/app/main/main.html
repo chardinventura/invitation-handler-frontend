@@ -27,4 +27,10 @@
         invitation-key={selectedInvitation.key}
         onnavigate={handleNavigation}
     ></app-attendance>
+
+    <app-farewell
+        if:true={activeView.farewell}
+        invitation={selectedInvitation}
+        onnavigate={handleNavigation}
+    ></app-farewell>
 </template>

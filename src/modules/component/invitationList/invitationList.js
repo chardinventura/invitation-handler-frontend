@@ -14,7 +14,7 @@ export default class InvitationList extends LightningElement {
 			id: "Identificador",
 			description: "Description",
 			selectYourFamily: "Seleccione su familia",
-			goToHome: "VOLVER A HOME"
+			goToHome: "VOLVER AL INICIO"
 		};
 	}
 

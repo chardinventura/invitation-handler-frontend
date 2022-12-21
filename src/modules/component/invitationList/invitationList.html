@@ -12,15 +12,14 @@
 		<div if:true={invitations} class="d-flex justify-content-center gap-2">
 			<div>
 				<template for:each={invitations} for:item="invitation">
-					<div key={invitation.id} class="border rounded-3 w-100 mb-2">
-						<button
-							data-id={invitation.id}
-							class="btn d-flex align-items-center"
-							onclick={handleView}>
-							<i class="fa-sharp fa-solid fa-people-roof me-2" data-id={invitation.id}></i>
-							{invitation.description}
-						</button>
-					</div>
+					<button
+						key={invitation.id}
+						data-id={invitation.id}
+						class="btn btn-outline-secondary d-flex align-items-center w-100 mb-1"
+						onclick={handleView}>
+						<i class="fa-sharp fa-solid fa-people-roof me-2" data-id={invitation.id}></i>
+						{invitation.description}
+					</button>
 				</template>
 			</div>
 		</div>

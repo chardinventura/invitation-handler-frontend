@@ -71,12 +71,12 @@ export default class AttendanceConfirmation extends LightningElement {
 		this.template.querySelector('component-toast').show();
 	}
 
+	handleGoBack() {
+		navigate.bind(this)(View.INVITATIONS);
+	}
+
 	handleSubmit() {
 		this._isLoading = true;
 		this.template.querySelector('component-attendance-list').registerAttendance();
-	}
-
-	handleAbort() {
-		navigate.bind(this)(View.FAREWELL);
 	}
 }

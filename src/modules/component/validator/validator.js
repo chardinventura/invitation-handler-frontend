@@ -76,4 +76,12 @@ export default class Validator extends LightningElement {
 			);
 		}
 	}
+
+	handleKeyUp({ keyCode }) {
+		console.log('handleKeyUp()');
+		// Enter key.
+		if(keyCode === 13) {
+			this.handleInvitationValidation();
+		}
+	}
 }

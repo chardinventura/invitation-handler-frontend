@@ -14,7 +14,7 @@
 					<div class="row">
 						<label class="col-auto col-form-label" for="key">{label.key}</label>
 						<div class="col">
-							<input data-id="key" id="key" class="form-control" type="text" onchange={handleKeyChange}>
+							<input data-id="key" id="key" class="form-control" type="text" onchange={handleKeyChange} onkeyup={handleKeyUp}>
 							<div if:true={isKeyInvalid} class="ms-1">
 								<span class="text-danger">{label.invalidKey}</span>
 							</div>

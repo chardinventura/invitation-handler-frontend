@@ -4,7 +4,7 @@ import { navigate } from 'util/functions';
 
 import { registerAttendance } from 'api/invitation'
 
-const buildPersonBtnClass = (attendance) => `btn btn-${attendance ? 'success' : 'outline-danger' } mb-2`;
+const buildPersonBtnClass = (attendance) => `btn btn-${attendance ? '' : 'outline-' }wine mb-2`;
 
 export default class Invitation extends LightningElement {
 

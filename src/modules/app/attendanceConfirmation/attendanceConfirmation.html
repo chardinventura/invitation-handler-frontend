@@ -1,57 +1,63 @@
 <template>
+    <component-toast
+		message={toastMessage}
+    ></component-toast>
+
 	<div class="d-flex justify-content-center">
-		<div class="card pt-3 px-3">
-			<div class="d-flex justify-content-center">
-				<img src="https://i.pinimg.com/736x/44/cf/8b/44cf8b5f7b7f6562b67784ef346aeca2.jpg" width="150" alt="">
+		<div>
+			<div class="card pt-3 mb-2 px-3">
+    			<component-spinner
+        			if:true={isLoading}
+    			></component-spinner>
+
+				<div class="d-flex justify-content-center">
+					<img src="https://i.pinimg.com/736x/44/cf/8b/44cf8b5f7b7f6562b67784ef346aeca2.jpg" width="150" alt="">
+				</div>
+				<div class="card-body">
+					<div class="mb-3">
+						<div>1. Saludos {selectedInvitation.description}</div>
+						<div>*</div>
+					</div>
+
+					<div class="mb-3">
+						<div>FAVOR CONFIRMAR SU ASISTENCIA</div>
+						<div>EN O ANTES DE SEPTIEMBRE 15,</div>
+						<div>2022</div>
+					</div>
+
+					<div class="mb-4">
+						<div>TRAJE FORMAL - ESTILO MET GALA</div>
+						<div>NIÑOS: DULCES SUEÑOS</div>
+					</div>
+
+					<div class="d-flex flex-column gap-3">
+						<div>
+							<h5 class="text-center">Asistencia</h5>
+
+							<component-attendance-list
+								people={people}
+								invitation-id={invitationId}
+        						onnavigate={handleNavigation}
+							></component-attendance-list>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="card-body">
-				<div class="mb-3">
-					<div>1. Saludos {selectedInvitation.description}</div>
-					<div>*</div>
-				</div>
 
-				<div class="mb-3">
-					<div>FAVOR CONFIRMAR SU ASISTENCIA</div>
-					<div>EN O ANTES DE SEPTIEMBRE 15,</div>
-					<div>2022</div>
-				</div>
-
-				<div class="mb-3">
-					<div>FAVOR CONFIRMAR SU ASISTENCIA</div>
-					<div>EN O ANTES DE SEPTIEMBRE 15,</div>
-					<div>2022</div>
-				</div>
-
-				<div class="mb-4">
-					<div>TRAJE FORMAL - ESTILO MET GALA</div>
-					<div>NIÑOS: DULCES SUEÑOS</div>
-				</div>
-
-				<div class="d-flex flex-column gap-3">
-					<button class="btn btn-outline-secondary w-100" onclick={handleConfirmation}>
-						<div class="d-flex">
-							<div>
-								<div class="border px-2 me-2">A</div>
-							</div>
-							<div>
-								<div>Si, confirmamos la</div>
-								<div>asistencia de todos.</div>
-							</div>
-						</div>
-					</button>
-
-					<button class="btn btn-outline-secondary w-100" onclick={handleAbort}>
-						<div class="d-flex">
-							<div>
-								<div class="border px-2 me-2">B</div>
-							</div>
-							<div>
-								<div>No, lamentablemente no</div>
-								<div>podremos acompañarles</div>
-							</div>
-						</div>
-					</button>
-				</div>
+			<div class="d-flex justify-content-between">
+				<button
+					class="btn btn-outline-primary"
+					onclick={handleNavigation}
+				>
+					{label.goBack}
+				</button>
+				<button
+					class="btn btn-primary"
+					onclick={handleSubmit}
+					disabled={isSubmitDisabled}
+				>
+					{label.submit}
+				</button>
 			</div>
 		</div>
 	</div>

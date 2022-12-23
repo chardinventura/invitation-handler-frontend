@@ -1,0 +1,14 @@
+<template>
+	<div if:true={people} class="d-flex flex-column mt-3">
+		<template for:each={people} for:item="person">
+			<button
+				class={person.class}
+				key={person.id}
+				data-id={person.id}
+				onclick={handlePersonSelection}
+			>
+				{person.firstName} {person.lastName}
+			</button>
+		</template>
+	</div>
+</template>

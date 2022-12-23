@@ -21,13 +21,6 @@
         onnavigate={handleNavigation}
     ></app-attendance-confirmation>
 
-    <app-attendance
-        if:true={activeView.attendance}
-        invitation-id={selectedInvitation.id}
-        invitation-key={selectedInvitation.key}
-        onnavigate={handleNavigation}
-    ></app-attendance>
-
     <app-farewell
         if:true={activeView.farewell}
         invitation={selectedInvitation}

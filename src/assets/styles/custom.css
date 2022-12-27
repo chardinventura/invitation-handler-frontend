@@ -1,3 +1,7 @@
+.border-wine {
+	border-color: #6b0d0d !important;
+}
+
 .btn-wine {
 	--bs-btn-color: #fff;
 	--bs-btn-bg: #6b0d0d;

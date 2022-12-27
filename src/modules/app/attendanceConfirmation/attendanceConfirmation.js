@@ -28,14 +28,18 @@ export default class AttendanceConfirmation extends LightningElement {
 		return !this.anyError && (!this.people || this._isLoading);
 	}
 
-	get isSubmitDisabled() {
+	get isConfirmButtonDisabled() {
 		return !this.people?.length;
+	}
+
+	get numberOfSeats() {
+		return this.people?.length;
 	}
 
 	get label() {
 		return {
 			goBack: "Volver",
-			submit: "Submit",
+			confirm: "Confirmar",
 			notPeopleFound: "No hay personas a registrar.",
 			problemsToFetch: "Problemas al obtener las personas a asistir.",
 			successFul: "Asistencia registrada con éxito.",
@@ -75,7 +79,7 @@ export default class AttendanceConfirmation extends LightningElement {
 		navigate.bind(this)(View.INVITATIONS);
 	}
 
-	handleSubmit() {
+	handleConfirmation() {
 		this._isLoading = true;
 		this.template.querySelector('component-attendance-list').registerAttendance();
 	}

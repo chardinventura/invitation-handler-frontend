@@ -3,30 +3,28 @@
 		message={toastMessage}
     ></component-toast>
 
-	<div class="d-flex justify-content-center">
+	<div class="d-flex justify-content-center mt-3">
 		<div>
-			<div class="card pt-3 mb-2 px-3">
+			<div class="border rounded pt-1 mb-2 px-3">
     			<component-spinner
         			if:true={isLoading}
     			></component-spinner>
 
 				<div class="d-flex justify-content-center">
-					<img src="https://i.pinimg.com/736x/44/cf/8b/44cf8b5f7b7f6562b67784ef346aeca2.jpg" width="150" alt="">
+					<img src="/public/assets/img/LOGO.png" width="150" alt="">
 				</div>
-				<div class="card-body">
+				<div class="text-center">
 					<div class="mb-3">
-						<div>1. Saludos {selectedInvitation.description}</div>
-						<div>*</div>
+						<div>Saludos {selectedInvitation.description}</div>
 					</div>
 
 					<div class="mb-3">
-						<div>Favor confirmar su asistencia</div>
-						<div>antes del 31 de enero de 2023</div>
+						<div>Hemos reservado {numberOfSeats} asientos para ustedes.</div>
 					</div>
 
-					<div class="mb-4">
-						<div>TRAJE FORMAL - ESTILO MET GALA</div>
-						<div>NIÑOS: DULCES SUEÑOS</div>
+					<div class="mb-3">
+						<div>Favor confirmar su asistencia antes del 31</div>
+						<div>de enero de 2023.</div>
 					</div>
 
 					<div class="d-flex flex-column gap-3">
@@ -52,10 +50,10 @@
 				</button>
 				<button
 					class="btn btn-wine"
-					onclick={handleSubmit}
-					disabled={isSubmitDisabled}
+					onclick={handleConfirmation}
+					disabled={isConfirmButtonDisabled}
 				>
-					{label.submit}
+					{label.confirm}
 				</button>
 			</div>
 		</div>

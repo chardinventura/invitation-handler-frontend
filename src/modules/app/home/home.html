@@ -1,9 +1,9 @@
 <template>
-	<div class="position-fixed w-100 h-100 start-0 top-0 d-flex justify-content-center">
+	<div class="position-fixed w-100 h-100 start-0 top-0 d-flex justify-content-center p-1">
 		<div
 			class="background-container d-flex flex-column align-items-center text-center overflow-auto p-3 border border-wine border-3">
 			<div>
-				<img class="rounded-circle" width="150"
+				<img class="border border-wine rounded-circle" width="150"
 					src="/public/assets/img/LOGO.png" alt="">
 			</div>
 
@@ -12,8 +12,12 @@
 			</div>
 
 			<div class="mb-3">
-				<div>Para nosotros es gran placer que nos acompañes en este d&iacute;a</div>
-				<div>tan especial. Te pedimos por favor completar la asistencia</div>
+				<div>Para nosotros es un gran placer que nos acompañes en este d&iacute;a</div>
+				<div>tan especial.</div>
+			</div>
+
+			<div class="mb-3">
+				<div>Te pedimos por favor completar la asistencia</div>
 				<div>de los miembros de tu familia, y estar&aacute;s listo para</div>
 				<div>que disfrutemos juntos de este gran d&iacute;a!</div>
 			</div>
@@ -27,10 +31,9 @@
 			</div>
 
 			<div class="d-flex justify-content-center mt-3">
-				<button class="btn text-bg-light p-2" onclick={handleNavigation}>
+				<button class="btn btn-wine p-2" onclick={handleNavigation}>
 					<div>RSVP</div>
-					<div>(ATTENDANCE CONFIRMATION / CONFIRMACION</div>
-					<div>DE ASISTENCIA A LA BODA)</div>
+					<div>CONFIRMACI&Oacute;N DE ASISTENCIA A LA BODA</div>
 				</button>
 			</div>
 		</div>

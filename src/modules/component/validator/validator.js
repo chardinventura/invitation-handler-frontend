@@ -2,9 +2,17 @@ import { api, LightningElement } from "lwc";
 import { validateInvitation } from "api/invitation";
 
 export default class Validator extends LightningElement {
-	@api
-	invitationId;
 
+	@api
+	get invitation() {
+		return this._invitation;
+	}
+
+	set invitation(value) {
+		this._invitation = value ?? {};
+	}
+
+	_invitation;
 	isKeyInvalid;
 
 	isValidating;
@@ -25,9 +33,12 @@ export default class Validator extends LightningElement {
 	}
 
 	@api
-	showModal() {
+	show() {
 		const modal = this.template.querySelector('[data-id="modal"]');
 		const key = this.template.querySelector('[data-id="key"]');
+		// Clean old values.
+		key.value = '';
+		this.isKeyInvalid = false;
 
 		if(!this.modal) {
 			modal.addEventListener('shown.bs.modal', () => {
@@ -51,7 +62,7 @@ export default class Validator extends LightningElement {
 		const invitation = {
 			key: this.key,
 		};
-		validateInvitation(this.invitationId, invitation)
+		validateInvitation(this.invitation.id, invitation)
 		.then((response) => {
 			this.handleValidationResult(response);
 		}).catch((error) => {
@@ -69,7 +80,7 @@ export default class Validator extends LightningElement {
 			this.dispatchEvent(
 				new CustomEvent("success", {
 					detail: {
-						id: this.invitationId,
+						id: this.invitation.id,
 						key: this.key,
 					},
 				})
@@ -78,7 +89,6 @@ export default class Validator extends LightningElement {
 	}
 
 	handleKeyUp({ keyCode }) {
-		console.log('handleKeyUp()');
 		// Enter key.
 		if(keyCode === 13) {
 			this.handleInvitationValidation();

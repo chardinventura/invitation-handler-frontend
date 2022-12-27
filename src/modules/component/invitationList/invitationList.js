@@ -7,7 +7,7 @@ export default class InvitationList extends LightningElement {
 	@api
 	invitations;
 
-	selectedInvitationId;
+	selectedInvitation;
 
 	get label() {
 		return {
@@ -19,8 +19,8 @@ export default class InvitationList extends LightningElement {
 	}
 
 	handleView({ target }) {
-		this.selectedInvitationId = target.dataset.id;
-		this.template.querySelector("component-validator").showModal();
+		this.selectedInvitation = this.invitations.find(({ id }) => id === target.dataset.id);
+		this.template.querySelector("component-validator").show();
 	}
 
 	handleSuccess({ detail }) {

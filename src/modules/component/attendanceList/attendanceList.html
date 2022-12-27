@@ -2,11 +2,19 @@
 	<div if:true={people} class="d-flex flex-column mt-3">
 		<template for:each={people} for:item="person">
 			<button
-				class={person.class}
+				class="btn btn-outline-wine d-flex align-items-center mb-2"
 				key={person.id}
 				data-id={person.id}
 				onclick={handlePersonSelection}
 			>
+				<i
+					if:true={person.attendance}
+					class="fa-solid fa-check me-2"
+				></i>
+				<i
+					if:false={person.attendance}
+					class="fa-solid fa-circle-xmark me-2"
+				></i>
 				{person.firstName} {person.lastName}
 			</button>
 		</template>

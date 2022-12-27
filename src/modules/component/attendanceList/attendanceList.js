@@ -4,8 +4,6 @@ import { navigate } from 'util/functions';
 
 import { registerAttendance } from 'api/invitation'
 
-const buildPersonBtnClass = (attendance) => `btn btn-${attendance ? '' : 'outline-' }wine mb-2`;
-
 export default class Invitation extends LightningElement {
 
 	@api
@@ -13,10 +11,7 @@ export default class Invitation extends LightningElement {
 
 	@api
 	set people(value) {
-		this._people = value?.map((person) => ({
-			...{...person},
-			class: buildPersonBtnClass(person.attendance)
-		}));
+		this._people = value ?? [];
 	}
 
 	get people() {
@@ -37,7 +32,6 @@ export default class Invitation extends LightningElement {
 			const attendance = person.id === id ? !person.attendance : person.attendance;
 			return {
 				...person,
-				class: buildPersonBtnClass(attendance),
 				attendance
 			};
 		});

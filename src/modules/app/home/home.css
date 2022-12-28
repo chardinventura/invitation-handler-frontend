@@ -1,5 +1,5 @@
 .background-container {
-	background-image: url(/public/assets/img/background.webp);
+	background-image: url(https://raw.githubusercontent.com/chardinventura/invitation-handler-frontend/develop/src/assets/img/background.webp);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;

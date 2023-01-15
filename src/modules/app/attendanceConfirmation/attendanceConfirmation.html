@@ -5,7 +5,7 @@
 
 	<div class="d-flex justify-content-center mt-3">
 		<div style="max-width: 332px;">
-			<div class="border border-wine rounded pt-1 mb-2 px-3">
+			<div class="border border-wine rounded pt-1 mb-1 px-3">
     			<component-spinner
         			if:true={isLoading}
     			></component-spinner>
@@ -28,7 +28,7 @@
 
 					<div class="d-flex flex-column gap-3">
 						<div>
-							<h5 class="text-center">Asistencia</h5>
+							<h5 class="text-center">{label.attendance}</h5>
 
 							<component-attendance-list
 								people={people}
@@ -39,21 +39,24 @@
 					</div>
 				</div>
 			</div>
+			<div>
+				<div class="text-center mb-2 text-bg-secondary p-1 rounded-2">{label.attendanceInstrucctions}</div>
 
-			<div class="d-flex justify-content-between">
-				<button
-					class="btn btn-outline-wine"
-					onclick={handleGoBack}
-				>
-					{label.goBack}
-				</button>
-				<button
-					class="btn btn-wine"
-					onclick={handleConfirmation}
-					disabled={isConfirmButtonDisabled}
-				>
-					{label.confirm}
-				</button>
+				<div class="d-flex justify-content-between">
+					<button
+						class="btn btn-outline-wine"
+						onclick={handleGoBack}
+					>
+						{label.goBack}
+					</button>
+					<button
+						class="btn btn-wine"
+						onclick={handleConfirmation}
+						disabled={isConfirmButtonDisabled}
+					>
+						{label.confirm}
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>

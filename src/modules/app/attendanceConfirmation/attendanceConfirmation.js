@@ -38,6 +38,8 @@ export default class AttendanceConfirmation extends LightningElement {
 
 	get label() {
 		return {
+			attendance: "Asistencia",
+			attendanceInstrucctions: "Seleccione las personas que asistirán tocando el nombre",
 			goBack: "Volver",
 			confirm: "Confirmar",
 			notPeopleFound: "No hay personas a registrar.",

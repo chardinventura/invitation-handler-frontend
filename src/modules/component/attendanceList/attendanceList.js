@@ -11,7 +11,12 @@ export default class Invitation extends LightningElement {
 
 	@api
 	set people(value) {
-		this._people = value ?? [];
+		this._people = [...(value ?? [])]
+		.sort(({ attendance }) => {
+			if(attendance) return -1;
+			else if(attendance) return 1;
+			return 0;
+		});
 	}
 
 	get people() {
